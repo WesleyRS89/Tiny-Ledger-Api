@@ -31,6 +31,12 @@ bundle install
 rails server
 ```
 
+4. Run Test Suite (Optional)
+Running the test suite provides additional context into the functionality of the API.  The following command will run the tests in document mode, providing for readable test cases. 
+```bash
+rspec -fd 
+```
+
 
 ## Endpoints 
 
@@ -148,27 +154,3 @@ curl http://localhost:3000/transaction_history
 * search for transactions by type
 * search for transactions by date
 * prevent overdrafts of withdrawls 
-
-
-
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
