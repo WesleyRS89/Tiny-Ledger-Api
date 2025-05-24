@@ -6,7 +6,34 @@ Tiny Ledger API is a very small Ruby on Rails API for performing core ledger tra
 ## Supported Core Functionality 
 - Create Deposit or Withdrawl 
 - View Current Balance
-- View Transaction History 
+- View Transaction History
+
+## Relevant Files 
+These are the files that support the core implementation of the API: 
+
+[`config/routes.rb`](./config/routes.rb)
+* Defines API Endpoints
+* Maps requests to controller actions
+
+[`app/controllers/transactions_controller.rb`](./app/controllers/transactions_controller.rb): 
+ * Implements all API actions: 
+  * POST `/transactions`, GET `/balance` & GET `/transaction_history`
+
+[`app/models/ledger.rb`](./app/models/ledger.rb)
+ * Defines Singleton Ledger Class
+ * In-memory transcations and running balance
+ * Updates Ledger transactions 
+ * Updates balance  
+
+[`app/models/transaction.rb`](./app/models/transaction.rb)
+ * Defines a single transaction
+ * Performs validations on a transaction 
+ * Computes amount of transaction in relation to balance
+
+[`spec/`](./spec/)
+* Test Suite
+* Controller tests: [`spec/controllers/transactions_controller_spec.rb`](./spec/controllers/transactions_controller_spec.rb)
+* Ledger & Transaction tests: [`spec/models`](./spec/models/)
 
 ## Getting started 
 
@@ -16,8 +43,8 @@ Tiny Ledger API is a very small Ruby on Rails API for performing core ledger tra
 
 1. Clone the repo: 
 ```bash
-    git clone <repo_url here>
-    cd ledger-api
+    git clone https://github.com/WesleyRS89/Tiny-Ledger-Api.git
+    cd Tiny-Ledger-Api
 ```
 
 2. Install dependencies 
@@ -148,9 +175,9 @@ curl http://localhost:3000/transaction_history
 ```
 
 
-*** New Features to Consider *** 
-* add support for multiple accounts
-* user defined currency for ledger
-* search for transactions by type
-* search for transactions by date
-* prevent overdrafts of withdrawls 
+## Future Enhancements to Consider  
+* Multiple Account Support
+* Unique UUIDs and Labels for Transactions 
+* Fetch balance for a given date 
+* Filter for history for transactions by type, date or amount threshold
+
